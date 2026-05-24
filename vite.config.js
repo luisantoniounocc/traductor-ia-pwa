@@ -3,6 +3,8 @@ import react from '@vitejs/plugin-react';
 import { VitePWA } from 'vite-plugin-pwa';
 
 export default defineConfig({
+  base: '/traductor-ia-pwa/',
+
   plugins: [
     react(),
 
@@ -17,7 +19,8 @@ export default defineConfig({
         background_color: '#020617',
         display: 'standalone',
         orientation: 'portrait',
-        start_url: '/',
+        start_url: '/traductor-ia-pwa/',
+
         icons: [
           {
             src: '/vite.svg',
@@ -35,10 +38,10 @@ export default defineConfig({
       workbox: {
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/api\.mymemory\.translated\.net\/.*/i,
+            urlPattern: /^https:\/\/translate\.googleapis\.com\/.*/i,
             handler: 'NetworkFirst',
             options: {
-              cacheName: 'traducciones-api-cache'
+              cacheName: 'google-translate-cache'
             }
           }
         ]
